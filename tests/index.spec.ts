@@ -100,4 +100,41 @@ describe("calculatePosition", () => {
 
     expect(p).toEqual({ x: 0, y: 6 });
   });
+
+  it("example 6", () => {
+    const grid = { w: 16, h: 8 };
+    const elements = [
+      { x: 0, y: 0, w: 1, h: 1 },
+      { x: 1, y: 0, w: 1, h: 1 },
+      { x: 2, y: 0, w: 1, h: 1 },
+      { x: 3, y: 0, w: 1, h: 1 },
+      { x: 4, y: 0, w: 1, h: 1 },
+      { x: 5, y: 0, w: 1, h: 1 },
+
+      { x: 0, y: 1, w: 1, h: 1 },
+      { x: 1, y: 1, w: 1, h: 1 },
+      { x: 2, y: 1, w: 1, h: 1 },
+      { x: 3, y: 1, w: 1, h: 1 },
+      { x: 4, y: 1, w: 1, h: 1 },
+      { x: 5, y: 1, w: 1, h: 1 },
+
+      { x: 0, y: 2, w: 1, h: 1 },
+      { x: 1, y: 2, w: 1, h: 1 },
+      { x: 2, y: 2, w: 1, h: 1 },
+      { x: 3, y: 2, w: 1, h: 1 },
+      { x: 4, y: 2, w: 1, h: 1 },
+      { x: 5, y: 2, w: 1, h: 1 },
+
+      { x: 6, y: 0, w: 6, h: 6 },
+    ];
+    const newElement = { w: 16, h: 1 };
+
+    const p = calculatePosition(grid, elements, newElement);
+    render(grid, elements, {
+      ...p,
+      ...newElement,
+    });
+
+    expect(p).toEqual({ x: 0, y: 6 });
+  });
 });

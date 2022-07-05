@@ -1,6 +1,14 @@
 import { Grid, Element } from "./index";
 
-const squares = ["🟫", "🟩", "🟥", "🟦", "🟧", "🟪", "🟨", "⬛️", "⬜️"];
+const squares = [
+  "\u25A3",
+  "\u25A4",
+  "\u25A5",
+  "\u25A6",
+  "\u25A7",
+  "\u25A8",
+  "\u25A9",
+];
 
 export function getElementId(e: Element): string {
   return `${e.x}_${e.y}`;
@@ -13,14 +21,14 @@ export function render(
 ) {
   const m: Array<Array<string>> = new Array(grid.h)
     .fill(0)
-    .map(() => new Array(grid.w).fill("◾"));
+    .map(() => new Array(grid.w).fill(" "));
 
   (newElement
     ? [
         ...elements,
         {
           ...newElement,
-          char: "💎",
+          char: "\u25A2",
         },
       ]
     : elements
@@ -31,11 +39,11 @@ export function render(
         const x = e.x + j;
         if (y >= m.length) {
           for (let k = 0; k < y - m.length + 1; k++) {
-            m.push(new Array(grid.w).fill("◾️"));
+            m.push(new Array(grid.w).fill(" "));
           }
         }
         if (x < grid.w) {
-          m[y][x] = e.char || squares[n] || "◾️";
+          m[y][x] = e.char || squares[n % squares.length] || "  ";
         }
       }
     }
