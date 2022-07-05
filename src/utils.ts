@@ -49,11 +49,14 @@ export function render(
     }
   });
 
-  console.log(
-    m
-      .map((row, i) => {
-        return "| " + row.map((_, j) => m[i][j]).join(" ") + " |";
-      })
-      .join("\n")
-  );
+  console.log(`Grid: ${JSON.stringify(grid)}
+Elements: ${JSON.stringify(elements)}
+New Element: ${JSON.stringify(newElement)}
+
+${m
+  .map((row, i) => {
+    return "| " + row.map((_, j) => m[i][j]).join(" ") + " |";
+  })
+  .join("\n")}
+`);
 }
